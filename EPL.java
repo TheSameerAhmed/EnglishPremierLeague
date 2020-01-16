@@ -1,11 +1,5 @@
-
-// We need to import the java.sql package to use JDBC
 import java.sql.*;
-
-// for reading from the command line
 import java.io.*;
-
-// for the login window
 import java.text.SimpleDateFormat;
 import java.lang.Exception;
 import java.util.Date;
@@ -18,22 +12,16 @@ import java.awt.event.*;
  * This class implements a graphical login window and a simple text
  * interface for interacting with the branch table 
  */ 
-public class EPL// implements ActionListener
+public class EPL
 {
-    // command line reader 
     private BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-
     private Connection con;
-
     // user is allowed 3 login attempts
     private int loginAttempts = 0;
-
     // components of the login window
     private JTextField usernameField;
     private JPasswordField passwordField;
     private JFrame mainFrame;
-
-
     /*
      * constructs login display and loads JDBC driver
      */ 
@@ -42,7 +30,7 @@ public class EPL// implements ActionListener
       try 
       {
 		DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());    // Load the Oracle JDBC driver
-		if(connect("xyz", "xyz"))                          // connect with your username and password
+		if(connect("xyz", "xyz"))                        			// connect with your username and password
 		    showMenu();
       }
       catch (SQLException ex)
@@ -57,7 +45,7 @@ public class EPL// implements ActionListener
      */ 
     private boolean connect(String username, String password)
     {
-      String connectURL = "jdbc:oracle:thin:@xyz";                              // oracle connect URL
+      String connectURL = "jdbc:oracle:thin:@xyz";                             
 
       try 
       {
@@ -363,7 +351,7 @@ public class EPL// implements ActionListener
     }
 
 
-    private void manchesterUnited(){
+    private void manchesterUnited(){								// SELECTION QUERY
         String name;
         Statement stmt;
         ResultSet rs;
@@ -390,7 +378,7 @@ public class EPL// implements ActionListener
         }
     }
 
-    private void loyalFans(){
+    private void loyalFans(){									// DIVISION QUERY
         String nameF;
         Statement stmt;
         ResultSet rs;
@@ -417,7 +405,7 @@ public class EPL// implements ActionListener
             System.out.println("Message: " + ex.getMessage());
         }
     }
-    private void playersNationality(){
+    private void playersNationality(){								// NESTED AGGREGATION
         String noPs, nat;
         Statement stmt;
         ResultSet rs;
@@ -449,7 +437,7 @@ public class EPL// implements ActionListener
         }
     }
 
-    private void numberFans(){
+    private void numberFans(){									// AGGREGATION QUERY
         String noFans;
         Statement stmt;
         ResultSet rs;
@@ -1023,7 +1011,7 @@ public class EPL// implements ActionListener
     }
 
 
-    private void viewSuspendedPlayers(){
+    private void viewSuspendedPlayers(){							// JOIN QUERY
         String pname;
         String club;
         Statement stmt;
@@ -1055,7 +1043,7 @@ public class EPL// implements ActionListener
         }
     }
 
-    private void viewInjured(){
+    private void viewInjured(){									// JOIN QUERY
         String pname;
         String club;
         Statement stmt;
@@ -1088,7 +1076,7 @@ public class EPL// implements ActionListener
         }
     }
 
-    private void viewTeams()
+    private void viewTeams()									// PROJECTION QUERY
     {
         String tname, clubOwner, managerN;
         Statement stmt;
